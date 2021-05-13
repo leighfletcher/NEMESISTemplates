@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+#PBS -N Nemesis
+#PBS -l walltime=00:60:00
+#PBS -l vmem=4gb
+#PBS -l nodes=1:ppn=1
+#PBS -t 1-1
+export PATH=~/bin/ifort:$PATH
+cd $PBS_O_WORKDIR
+inputdir=core_${PBS_ARRAYID}
+cd $inputdir
+Nemesis < nemesis.nam > log_${PBS_ARRAYID}
